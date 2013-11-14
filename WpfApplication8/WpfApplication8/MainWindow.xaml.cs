@@ -23,6 +23,7 @@ namespace WpfApplication8
     public partial class MainWindow : Window
     {
         private string str = "initial...";
+        int index = 0;
 
         public MainWindow()
         {
@@ -42,11 +43,9 @@ namespace WpfApplication8
             DataContext = this;
         }
 
-        int index = 0;
 
         void t_Tick(object sender, EventArgs e)
         {
-            //throw new NotImplementedException();
             index++;
             this.Dispatcher.Invoke(delegate
             {
@@ -76,6 +75,6 @@ namespace WpfApplication8
         }
 
         private static readonly DependencyProperty NamesProperty =
-            DependencyProperty.Register("Names2", typeof(string), typeof(MainWindow), new UIPropertyMetadata(string.Empty));
+            DependencyProperty.Register("Names2", typeof(string), typeof(MainWindow));
     }
 }
