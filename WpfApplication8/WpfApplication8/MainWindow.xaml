@@ -3,6 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <Label x:Name="label1" Content="{Binding NotifyOnSourceUpdated=True, Path=Names}"  HorizontalAlignment="Left" Margin="155,90,0,0" VerticalAlignment="Top" Height="106" Width="214"/>
+        <Label x:Name="label1" Content="{Binding Names2}"  HorizontalAlignment="Left" Margin="155,90,0,0" VerticalAlignment="Top" Height="106" Width="214"/>
     </Grid>
 </Window>

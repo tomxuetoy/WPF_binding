@@ -28,28 +28,54 @@ namespace WpfApplication8
         {
             InitializeComponent();
 
+            //var timer = new System.Timers.Timer();
+            //timer.Interval = 100;
+            //timer.Elapsed += timer_Elapsed;
+            //timer.Enabled = true;
             var t = new DispatcherTimer();
             // 1 second
             t.Interval = new TimeSpan(0, 0, 0, 0, 300);
-            t.Tick += aaa;
-            t.IsEnabled = true;
+            t.Tick += t_Tick;
+            //t.IsEnabled = false;
             t.Start();
 
             DataContext = this;
         }
 
-        private void aaa(object sender, EventArgs e)
+        int index = 0;
+
+        void t_Tick(object sender, EventArgs e)
         {
-            for (int i = 0; ; i++)
+            //throw new NotImplementedException();
+            index++;
+            this.Dispatcher.Invoke(delegate
             {
-                Names = i.ToString();
-            }
+                Names = index + "";
+            });
         }
 
-        public string Names
+        //void timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        //{
+        //    index++;
+        //    this.Dispatcher.Invoke(delegate
+        //    {
+        //        Names = index + "";
+        //    });
+        //}
+
+        //public string Names
+        //{
+        //    get { return str; }
+        //    set { str = value; }
+        //}
+
+        private string Names
         {
-            get { return str; }
-            set { str = value; }
+            get { return (string)GetValue(NamesProperty); }
+            set { SetValue(NamesProperty, value); }
         }
+
+        private static readonly DependencyProperty NamesProperty =
+            DependencyProperty.Register("Names2", typeof(string), typeof(MainWindow), new UIPropertyMetadata(string.Empty));
     }
 }
